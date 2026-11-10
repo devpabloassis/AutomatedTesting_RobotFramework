@@ -23,7 +23,7 @@ The repository has two parts:
 - **Data-driven tests** with `[Template]` (field domain, quantities and SQL injection payloads).
 - **Parallel API run** with [pabot](https://pabot.org); persistence tests start their own server and database.
 - **Known defects tracked with tags** (`known_bug`), so the suite separates real regressions from expected failures.
-- **Continuous integration** with GitHub Actions: API suite as the gate, a check that the known defects still fail, and the APK build.
+- **Continuous integration** with GitHub Actions: the API suite, the APK build, and the mobile suite on an Android emulator. Every job checks that the tests pass and that the known defects still fail.
 
 ## The system under test
 
