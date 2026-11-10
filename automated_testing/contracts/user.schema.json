@@ -1,0 +1,12 @@
+{
+  "$id": "user",
+  "title": "User",
+  "description": "Response of POST /api/users, GET /api/users/:username and POST /api/login.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["username", "createdAt"],
+  "properties": {
+    "username": { "type": "string", "pattern": "^[A-Za-z0-9_]{3,30}$" },
+    "createdAt": { "type": "string", "format": "date-time" }
+  }
+}

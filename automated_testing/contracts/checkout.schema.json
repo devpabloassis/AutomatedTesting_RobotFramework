@@ -1,0 +1,12 @@
+{
+  "$id": "checkout",
+  "title": "Checkout",
+  "description": "Response of POST /api/users/:username/cart/checkout.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "totalCents"],
+  "properties": {
+    "status": { "const": "READY_FOR_PAYMENT" },
+    "totalCents": { "type": "integer", "minimum": 1 }
+  }
+}

@@ -1,0 +1,30 @@
+# Node
+node_modules/
+
+# System under test
+application/data/
+
+# Python / Robot Framework
+.venv/
+__pycache__/
+*.pyc
+automated_testing/results/
+automated_testing/.test-data/
+automated_testing/.appium/
+automated_testing/.pabotsuitenames
+pabot_results/
+
+# Kotlin / Android / iOS build output
+application/src_mobile/.gradle/
+application/src_mobile/.kotlin/
+application/src_mobile/build/
+application/src_mobile/composeApp/build/
+application/src_mobile/local.properties
+application/src_mobile/iosApp/build/
+*.iml
+.idea/
+xcuserdata/
+.DS_Store
+
+# Environment
+.env

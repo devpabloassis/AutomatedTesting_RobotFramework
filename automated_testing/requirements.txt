@@ -1,0 +1,4 @@
+robotframework==7.3.2
+robotframework-pabot==5.1.0
+robotframework-appiumlibrary==3.0
+jsonschema[format]==4.25.1

@@ -1,0 +1,44 @@
+{
+  "$id": "company",
+  "title": "Company",
+  "description": "Response of GET /api/companies/:companyId and each element of GET /api/companies.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["id", "name", "description", "products"],
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+    "name": { "type": "string", "minLength": 1 },
+    "description": { "type": "string", "minLength": 1 },
+    "products": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/definitions/product" }
+    }
+  },
+  "definitions": {
+    "product": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "options"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9-]+$" },
+        "name": { "type": "string", "minLength": 1 },
+        "options": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "$ref": "#/definitions/option" }
+        }
+      }
+    },
+    "option": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "label", "priceCents"],
+      "properties": {
+        "id": { "type": "string", "enum": ["S", "M", "L", "R"] },
+        "label": { "type": "string", "enum": ["Small", "Medium", "Large", "Regular"] },
+        "priceCents": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

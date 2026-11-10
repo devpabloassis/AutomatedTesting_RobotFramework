@@ -1,0 +1,13 @@
+{
+  "$id": "payment",
+  "title": "Payment",
+  "description": "Response of POST /api/users/:username/cart/pay.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["status", "totalCents", "message"],
+  "properties": {
+    "status": { "const": "PAID" },
+    "totalCents": { "type": "integer", "minimum": 1 },
+    "message": { "type": "string", "minLength": 1 }
+  }
+}

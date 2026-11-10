@@ -1,0 +1,11 @@
+{
+  "name": "food-marketplace",
+  "version": "1.0.0",
+  "description": "System under test: REST API (src_api) and Kotlin Multiplatform mobile app (src_mobile)",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node src_api/server.js",
+    "start:lan": "HOST=0.0.0.0 node src_api/server.js"
+  }
+}

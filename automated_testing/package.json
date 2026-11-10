@@ -1,0 +1,15 @@
+{
+  "name": "food-marketplace-robot-tests",
+  "version": "1.0.0",
+  "description": "Local Appium server used by the Robot Framework mobile tests",
+  "private": true,
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "appium": "appium --base-path / --relaxed-security",
+    "drivers:android": "appium driver install uiautomator2",
+    "drivers:ios": "appium driver install xcuitest"
+  },
+  "devDependencies": {
+    "appium": "^3.0.0"
+  }
+}

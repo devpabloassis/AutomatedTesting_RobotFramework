@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDisplayName</key>
+    <string>Food Marketplace</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.foodmarketplace.app</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0.0</string>
+    <key>CFBundleVersion</key>
+    <string>1</string>
+    <key>CADisableMinimumFrameDurationOnPhone</key>
+    <true/>
+    <!-- Deep links used by the automated tests: foodmarket://open/... -->
+    <key>CFBundleURLTypes</key>
+    <array>
+        <dict>
+            <key>CFBundleURLName</key>
+            <string>com.foodmarketplace.app</string>
+            <key>CFBundleURLSchemes</key>
+            <array>
+                <string>foodmarket</string>
+            </array>
+        </dict>
+    </array>
+    <!-- The system under test runs locally over plain HTTP (http://127.0.0.1). -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsLocalNetworking</key>
+        <true/>
+    </dict>
+    <key>UILaunchScreen</key>
+    <dict/>
+</dict>
+</plist>

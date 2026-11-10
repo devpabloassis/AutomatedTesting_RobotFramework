@@ -1,0 +1,29 @@
+{
+  "$id": "error",
+  "title": "Error",
+  "description": "Body of every error response (4xx and 5xx status).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["code", "message"],
+  "properties": {
+    "code": {
+      "type": "string",
+      "enum": [
+        "VALIDATION_ERROR",
+        "USER_ALREADY_EXISTS",
+        "USER_NOT_FOUND",
+        "INVALID_CREDENTIALS",
+        "COMPANY_NOT_FOUND",
+        "ITEM_NOT_FOUND",
+        "CART_COMPANY_CONFLICT",
+        "QUANTITY_LIMIT_EXCEEDED",
+        "CART_EMPTY",
+        "CART_MIXED_COMPANIES",
+        "NOT_FOUND",
+        "METHOD_NOT_ALLOWED",
+        "INTERNAL_ERROR"
+      ]
+    },
+    "message": { "type": "string", "minLength": 1 }
+  }
+}
