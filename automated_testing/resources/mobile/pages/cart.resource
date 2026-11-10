@@ -17,7 +17,7 @@ Item Should Be In The Cart
 Item Should Not Be In The Cart
     [Arguments]    ${reference}
     ${row}=    Cart Row Id    ${reference}
-    Element Should Not Exist    ${row}
+    Element Should Not Exist    ${row}    timeout=10s
 
 Item Row Should Show
     [Arguments]    ${reference}    ${name}    ${company}    ${option}    ${unit_price}

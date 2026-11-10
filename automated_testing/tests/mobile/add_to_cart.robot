@@ -35,6 +35,7 @@ TC-MOB-ADD-003 - Same product and size
     And I am on the screen "/companies/burgers"
     When I add the product "double" to the cart
     Then the cart counter should show "1"
+    And I should see the message "Product added to the cart."
     When I add the product "double" to the cart
     Then the cart counter should show "2"
     And the user's cart should have 1 item

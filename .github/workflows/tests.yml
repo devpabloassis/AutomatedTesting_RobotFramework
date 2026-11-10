@@ -101,6 +101,8 @@ jobs:
     timeout-minutes: 60
     env:
       API_LEVEL: 34
+      # Phone-sized screen. The default AVD is 320x640, too small for the UI tests.
+      AVD_PROFILE: pixel_6
     defaults:
       run:
         working-directory: automated_testing
@@ -153,7 +155,7 @@ jobs:
           path: |
             ~/.android/avd/*
             ~/.android/adb*
-          key: avd-${{ env.API_LEVEL }}-google_apis-x86_64
+          key: avd-${{ env.API_LEVEL }}-google_apis-x86_64-${{ env.AVD_PROFILE }}
 
       - name: Create the emulator snapshot
         if: steps.avd-cache.outputs.cache-hit != 'true'
@@ -162,6 +164,7 @@ jobs:
           api-level: ${{ env.API_LEVEL }}
           target: google_apis
           arch: x86_64
+          profile: ${{ env.AVD_PROFILE }}
           force-avd-creation: false
           emulator-options: -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: false
@@ -175,6 +178,7 @@ jobs:
           api-level: ${{ env.API_LEVEL }}
           target: google_apis
           arch: x86_64
+          profile: ${{ env.AVD_PROFILE }}
           force-avd-creation: false
           emulator-options: -no-snapshot-save -no-window -gpu swiftshader_indirect -noaudio -no-boot-anim -camera-back none
           disable-animations: true
