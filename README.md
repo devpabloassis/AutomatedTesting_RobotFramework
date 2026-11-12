@@ -25,6 +25,21 @@ The repository has two parts:
 - **Known defects tracked with tags** (`known_bug`), so the suite separates real regressions from expected failures.
 - **Continuous integration** with GitHub Actions: the API suite, the APK build, and the mobile suite on an Android emulator. Every job checks that the tests pass and that the known defects still fail.
 
+## How this project was built
+
+The project simulates the workflow of a real QA team, from the user story to the automated suite:
+
+1. **Specification first.** I wrote the product story, business rules, user stories and acceptance criteria in [`PRODUCT_SPEC.md`](docs/PRODUCT_SPEC.md). Testability is part of the requirements: every element used by the automation must have a unique, stable id (`testTag` in the app, which becomes the Android `resource-id` and the iOS `accessibilityIdentifier`).
+2. **Intentional defects.** I left defects in the application on purpose, so the suite does **not** pass at 100%. This proves that the tests really detect problems, and shows how known defects are tracked without hiding new regressions.
+3. **Test cases from the requirements.** The scenarios were extracted from the stories and acceptance criteria and documented with IDs in [`MOBILE_TEST_CASES.md`](docs/MOBILE_TEST_CASES.md) and [`API_TEST_CASES.md`](docs/API_TEST_CASES.md), since there is no separate test management tool connected to the project.
+4. **Automation.** Each documented test case became a Robot Framework test with the same ID, organized in `api` and `mobile` suites.
+
+**AI-assisted, QA-driven.** I used [Claude](https://www.anthropic.com/claude) (Anthropic) to extract the test scenarios from the requirements and to create the automated scenarios, following my specifications: test strategy, scope, coverage levels, architecture (BDD-style keywords, Page Objects and object map), naming and tag conventions. I reviewed the scenarios and the code, and validated the results against the intentional defects.
+
+### Why stable ids instead of XPath or self-healing locators
+
+An id is a contract between development and QA: it does not change when the layout, the text or the styling changes, so a test breaks only when the behavior breaks. On mobile, XPath is also slow and tied to the view hierarchy of each platform, and self-healing locators can silently "heal" onto the wrong element and hide a real regression. That is why the specification requires ids and the test project keeps all of them in a single object map, shared by Android and iOS.
+
 ## The system under test
 
 A marketplace with 4 companies (pizzeria, burgers, Japanese food and juices), each with 4 products.
