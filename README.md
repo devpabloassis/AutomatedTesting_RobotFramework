@@ -14,7 +14,7 @@ The repository has two parts:
 ## Highlights
 
 - **Robot Framework BDD:** tests are written as Given/When/Then sentences with embedded arguments, and every test is traceable to a documented test case ID (`TC-API-*`, `TC-MOB-*`).
-- **One suite, two platforms:** the same mobile tests run on **Android** (UiAutomator2) and **iOS** (XCUITest). Elements are located by stable ids (`testTag` → Android `resource-id` / iOS `accessibilityIdentifier`).
+- **Same tests, two platforms:** the same mobile tests run on **Android** (UiAutomator2) and **iOS** (XCUITest). Elements are located by stable ids (`testTag` → Android `resource-id` / iOS `accessibilityIdentifier`).
 - **Automatic device selection:** with no options, `run.py` detects the platform and uses the first device listed by `adb devices`. Platform, device, suite and tags can be chosen on the command line.
 - **Page Object Model** plus a central **object map** with every element id.
 - **Fast and isolated mobile setup:** preconditions are built through the API, and test hooks in the app's deep links start a user session without going through the login screen.
@@ -32,7 +32,7 @@ The project simulates the workflow of a real QA team, from the user story to the
 1. **Specification first.** I wrote the product story, business rules, user stories and acceptance criteria in [`PRODUCT_SPEC.md`](docs/PRODUCT_SPEC.md). Testability is part of the requirements: every element used by the automation must have a unique, stable id (`testTag` in the app, which becomes the Android `resource-id` and the iOS `accessibilityIdentifier`).
 2. **Intentional defects.** I left defects in the application on purpose, so the suite does **not** pass at 100%. This proves that the tests really detect problems, and shows how known defects are tracked without hiding new regressions.
 3. **Test cases from the requirements.** The scenarios were extracted from the stories and acceptance criteria and documented with IDs in [`MOBILE_TEST_CASES.md`](docs/MOBILE_TEST_CASES.md) and [`API_TEST_CASES.md`](docs/API_TEST_CASES.md), since there is no separate test management tool connected to the project.
-4. **Automation.** Each documented test case became a Robot Framework test with the same ID, organized in `api` and `mobile` suites.
+4. **Automation.** Each documented test case became a Robot Framework test with the same ID, organized in 19 suites (`.robot` files) in the `api` and `mobile` folders.
 
 **AI-assisted, QA-driven.** I used [Claude](https://www.anthropic.com/claude) (Anthropic) to extract the test scenarios from the requirements and to create the automated scenarios, following my specifications: test strategy, scope, coverage levels, architecture (BDD-style keywords, Page Objects and object map), naming and tag conventions. I reviewed the scenarios and the code, and validated the results against the intentional defects.
 
